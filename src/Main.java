@@ -2,8 +2,10 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        boolean allChecksPassed = false;
         boolean verbose = false;
+        boolean allChecksPassed = false;
+        int numChecksPassed = 0;
+        int numChecks = 0;
 
         if (args.length >= 1) {
             verbose = args[1].equals("Y");
@@ -47,12 +49,18 @@ public class Main {
         Solver solver = new Solver(colA, colB);
 
         for (int i = 0; i < aCoefs.length; i++) {
-            allChecksPassed = solver.solve("A", i, bCoefs[i], verbose);
+            numChecks++;
+            if (solver.solve("A", i, bCoefs[i], verbose)) {
+                numChecksPassed++;
+            }
         }
         for (int i = 0; i < aCoefs.length; i++) {
-            allChecksPassed = solver.solve("B", i, aCoefs[i], verbose);
+            numChecks++;
+            if (solver.solve("B", i, aCoefs[i], verbose)) {
+                numChecksPassed++;
+            }
         }
-
+        allChecksPassed = numChecksPassed == numChecks;
         System.out.println("\n" + (allChecksPassed ? "A" : "Not a") + "ll of the resultant vectors are equal to the target vectors.\nThe subspaces formed by colA and colB are " + (allChecksPassed ? "" : "not ") + "the same.");
     }
 }

@@ -27,8 +27,11 @@ public class Solver {
         for (int i = 0; i < colB.length; i++) {
             workingVector = workingMatrix[i];
             for (int j = 0; j < colB[i].length; j++) {
-                resultantVector[j] += Math.round(workingVector[j] * coefficients[i]);
+                resultantVector[j] += workingVector[j] * coefficients[i];
             }
+        }
+        for (int i = 0; i < resultantVector.length; i++) {
+            resultantVector[i] = Math.round(resultantVector[i]);
         }
         result = Arrays.equals(resultantVector, targetVector);
 
