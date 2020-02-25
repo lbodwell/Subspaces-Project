@@ -24,9 +24,9 @@ public class Solver {
             }
         }
 
-        for (int i = 0; i < colB.length; i++) {
+        for (int i = 0; i < workingMatrix.length; i++) {
             workingVector = workingMatrix[i];
-            for (int j = 0; j < colB[i].length; j++) {
+            for (int j = 0; j < workingMatrix[i].length; j++) {
                 resultantVector[j] += workingVector[j] * coefficients[i];
             }
         }
