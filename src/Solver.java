@@ -40,7 +40,7 @@ public class Solver {
             for (double entry : resultantVector) {
                 System.out.println(entry);
             }
-            System.out.println("The vectors are " + (result ? "" : "not ") + "equal.");
+            System.out.println("The vectors are " + (result ? "" : "not ") + "equal.\n");
         }
 
         return result;

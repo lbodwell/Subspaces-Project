@@ -47,7 +47,6 @@ public class Main {
         };
 
         Solver solver = new Solver(colA, colB);
-
         for (int i = 0; i < aCoefs.length; i++) {
             numChecks++;
             if (solver.solve("A", i, bCoefs[i], verbose)) {
@@ -61,6 +60,10 @@ public class Main {
             }
         }
         allChecksPassed = numChecksPassed == numChecks;
-        System.out.println("\n" + (allChecksPassed ? "A" : "Not a") + "ll of the resultant vectors are equal to the target vectors.\nThe subspaces formed by colA and colB are " + (allChecksPassed ? "" : "not ") + "the same.");
+
+        if (!verbose) {
+            System.out.println();
+        }
+        System.out.println((allChecksPassed ? "A" : "Not a") + "ll of the resultant vectors are equal to the target vectors.\nThe subspaces formed by colA and colB are " + (allChecksPassed ? "" : "not ") + "the same.");
     }
 }
